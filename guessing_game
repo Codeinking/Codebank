@@ -1,0 +1,40 @@
+import random
+
+def guessing_game():
+    quest = int(input('choose a range of numbers you wish to guess from, number 20 - : '))
+    while quest < 20:
+        quest = int(input('choose a range of numbers you wish to guess from, number 20 - : '))
+
+    right_number = random.randint(0,quest)
+
+    guess_limit = 9
+    out_of_guess =False
+    number_guesses = 0
+    guess = ""
+    guesses = []
+    while not(out_of_guess) and guess != right_number:
+
+        if number_guesses < guess_limit:
+
+            guess = int(input('which number do you think it is?. give it your best shot: '))
+
+            number_guesses = number_guesses + 1
+
+
+            if guess < right_number:
+                print('your just below it: ')
+            elif guess > right_number:
+                print('man take steps down: ')
+            guesses.append(guess)
+        else:
+            out_of_guess = True
+        b = len(set(guesses))
+
+    if out_of_guess:
+        print('out of guess you lose')
+        print('you tried {} different numbers and still lost'.format(b))
+    else:
+        print('you win')
+        print('you tried {} different number(s) before you won'.format(b))
+
+guessing_game()
